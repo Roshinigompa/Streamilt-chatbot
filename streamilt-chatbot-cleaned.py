@@ -139,32 +139,32 @@ def chatbot_interaction():
 
     
 
-
-    with col0:  # Place the content in col0
-        with st.expander("📄 Resume"):
-            resume_path = "Hyma_Roshini_Gompa_Resume.pdf"
-            # Read and encode the PDF to Base64
+    with col0:
+        if st.button("📄 Resume"):
             try:
-                with open(resume_path, "rb") as file:
-                    base64_pdf = base64.b64encode(file.read()).decode("utf-8")
+                # Cloud-hosted Google Drive link for the resume
+                drive_link = "https://drive.google.com/file/d/15b9T2H3QeYCDcUiTvStCeMn3jh9lgZWx/preview"  # Replace with your actual link
+                download_link = "https://drive.google.com/uc?id=15b9T2H3QeYCDcUiTvStCeMn3jh9lgZWx&export=download"  # Direct download link
+                st.markdown(f'<iframe src="{drive_link}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
+                st.markdown(
+                    f"""
+                    <a href="{download_link}" target="_blank" style="
+                    display: inline-block;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                    background-color: #4CAF50;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    text-align: center;
+                    ">Download Resume</a>
+                    """,
+                    unsafe_allow_html=True,
+                )
+            except Exception as e:
+                st.error(f"An error occurred while displaying the resume: {e}")
 
-                # Embed the PDF in an iframe
-                pdf_display = f"""
-                    <iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>
-                """
-                st.markdown(pdf_display, unsafe_allow_html=True)
-
-                # Provide a download button
-                with open(resume_path, "rb") as file:
-                    st.download_button(
-                        label="Download Resume",
-                        data=file,
-                        file_name="Hyma_Roshini_Gompa_Resume.pdf",
-                        mime="application/pdf",
-                    )
-            except FileNotFoundError:
-                st.error("Resume file not found. Please check the file path.")
-        
     with col1:
         if st.button("Background"):
             user_input = "background"
