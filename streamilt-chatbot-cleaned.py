@@ -142,8 +142,7 @@ def chatbot_interaction():
 
     with col0:  # Place the content in col0
         with st.expander("📄 Resume"):
-            resume_path = "/Users/hymaroshinigompa/Documents/Resume and CL/Hyma_Roshini_Gompa_Resume!!.pdf"  # Update this with the path to your resume
-
+            resume_path = "Hyma_Roshini_Gompa_Resume.pdf"
             # Read and encode the PDF to Base64
             try:
                 with open(resume_path, "rb") as file:
