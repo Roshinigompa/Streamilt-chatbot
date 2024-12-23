@@ -110,21 +110,29 @@ def generate_custom_response(user_input):
 def speech_to_text():
     recognizer = sr.Recognizer()
     container = st.empty()  # Create an empty container for dynamic updates
-    with sr.Microphone() as source:
-        container.info("Listening... Please speak now!")  # Display the prompt
-        try:
-            audio = recognizer.listen(source, timeout=5)
-            spoken_text = recognizer.recognize_google(audio)
-            container.empty()  # Clear the prompt after recognition
-            return spoken_text
-        except sr.UnknownValueError:
-            container.error("Sorry, I could not understand the audio.")
-        except sr.RequestError as e:
-            container.error(f"Could not request results; {e}")
-        finally:
-            container.empty()  # Ensure the prompt is cleared in all cases
-        return ""
 
+    try:
+        # Check if a default microphone is available
+        with sr.Microphone() as source:
+            container.info("Listening... Please speak now!")  # Display the prompt
+            try:
+                # Listen to the audio input
+                audio = recognizer.listen(source, timeout=5)
+                spoken_text = recognizer.recognize_google(audio)
+                container.empty()  # Clear the prompt after recognition
+                return spoken_text
+            except sr.UnknownValueError:
+                container.error("Sorry, I could not understand the audio.")
+            except sr.RequestError as e:
+                container.error(f"Could not request results; {e}")
+            finally:
+                container.empty()  # Ensure the prompt is cleared in all cases
+    except OSError:
+        # Handle the case where no microphone is available
+        container.error("No microphone input device available. Please ensure a microphone is connected.")
+        return "No microphone available."
+    
+    return ""
 
 # Chatbot interaction with UI enhancements
 def chatbot_interaction():
