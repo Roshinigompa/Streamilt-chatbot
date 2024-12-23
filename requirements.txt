@@ -1,6 +1,7 @@
 streamlit
-transformers==4.28.1
 torch>=1.13.1
 speechrecognition
-pyaudio==0.2.11
-# Force reinstall
+pyaudio==0.2.11 
+transformers>=4.28.0
+tokenizers>=0.13.3
+
