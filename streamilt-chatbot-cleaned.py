@@ -43,7 +43,18 @@ def generate_custom_response(user_input):
     ai_keywords=["ai tools"]
     Collab_keywords=["collaboration"]
     future_keywords=["future","goal"]
-
+    chatbot_build_keywords = ["how was this chatbot built", "chatbot creation", "chatbot development"]
+    technology_keywords = ["technology used", "tools used", "tech stack"]
+    design_keywords = ["design decisions", "design strategy", "ui design"]
+    speech_keywords = ["speech recognition", "voice input", "speech-to-text"]
+    improvements_keywords = ["future improvements", "enhancements", "updates"]
+    educator_keywords = ["educators", "education tools", "k-12", "teacher support"]
+    dynamic_keywords = ["dynamic materials", "dynamic resources", "alignment with standards"]
+    user_feedback_keywords = ["user feedback", "feedback incorporation", "iterative improvements"]
+    why_role_keywords = ["why are you interested in this role", "why this role", "why futuremakers"]
+    strengths_keywords = ["what are your strengths", "strengths", "your strengths"]
+    weaknesses_keywords = ["what are your weaknesses", "weaknesses", "your weaknesses"]
+    challenges_keywords = ["how do you handle challenges", "handle challenges", "challenges"]
 
 
     # Check if any background keyword is in the user's input
@@ -100,6 +111,30 @@ def generate_custom_response(user_input):
             "and reinforcement learning. Additionally, I aspire to take on leadership roles where I can drive AI-driven innovations and "
             "help organizations implement AI strategies that solve real-world problems effectively."
         )
+    elif any(keyword in user_input_lower for keyword in chatbot_build_keywords):
+        return "This chatbot was built using Python and Streamlit for the user interface, GPT-2 for text generation, and a keyword-based mapping system for predefined responses."
+    elif any(keyword in user_input_lower for keyword in technology_keywords):
+        return "The chatbot uses GPT-2 from Hugging Face for natural language generation, Streamlit for the UI, and SpeechRecognition for voice input. It also incorporates predefined mappings for efficient responses."
+    elif any(keyword in user_input_lower for keyword in design_keywords):
+        return "The chatbot's design prioritizes usability and efficiency. Predefined responses ensure quick answers to common questions, while GPT-2 handles more general queries. Interactive elements enhance user engagement."
+    elif any(keyword in user_input_lower for keyword in speech_keywords):
+        return "Speech-to-text functionality is implemented using the SpeechRecognition library and Google Web Speech API, enabling users to interact via voice."
+    elif any(keyword in user_input_lower for keyword in improvements_keywords):
+        return "Future improvements include upgrading to GPT-3.5 for better contextual understanding, integrating databases for dynamic content, and adding analytics to track user interaction."
+    elif any(keyword in user_input_lower for keyword in educator_keywords):
+        return "I believe educators benefit most from AI tools that simplify planning and align with educational standards. I aim to develop systems like Readyness that provide dynamic resources tailored to teacher needs."
+    elif any(keyword in user_input_lower for keyword in dynamic_keywords):
+        return "Dynamic resources are key to helping educators adapt materials for diverse learning environments. My focus is on designing AI systems that automatically generate aligned content with standards like NGSS and CASEL."
+    elif any(keyword in user_input_lower for keyword in user_feedback_keywords):
+        return "Incorporating user feedback is essential for building effective AI tools. I ensure iterative improvements by gathering insights through testing and refining the features to match user needs."
+    elif any(keyword in user_input_lower for keyword in why_role_keywords):
+        return "I’m passionate about leveraging AI to create impactful educational tools. FutureMakers’ mission to empower educators aligns with my goal of using AI to simplify complex tasks and enhance teaching effectiveness. This role offers an opportunity to contribute my technical expertise while addressing real-world challenges in education."
+    elif any(keyword in user_input_lower for keyword in strengths_keywords):
+        return "My strengths lie in problem-solving, collaboration, and designing user-centric solutions. I have a strong technical background in Python, TensorFlow, and data visualization tools like Tableau and Power BI. My ability to work collaboratively and deliver impactful results sets me apart."
+    elif any(keyword in user_input_lower for keyword in weaknesses_keywords):
+        return "One of my weaknesses is being highly detail-oriented, which can sometimes lead me to spend extra time ensuring perfection. However, I am learning to balance this by setting clear priorities and focusing on meeting deadlines without compromising quality."
+    elif any(keyword in user_input_lower for keyword in challenges_keywords):
+        return "I handle challenges by breaking them down into smaller tasks, analyzing the root cause, and collaborating with team members for innovative solutions. For example, when faced with a tight deadline for a data pipeline project, I divided responsibilities effectively, allowing the team to meet the deadline with high-quality results."
 
     else:
         return "The command does not match any known responses. Please change the command and try again."
